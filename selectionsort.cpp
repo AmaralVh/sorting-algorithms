@@ -4,26 +4,26 @@
 using namespace std;
 
 
-void bubblesort(vector<int> &vetor) {
+void troca(vector<int> &vetor, int i, int j) {
+    int aux = vetor[i];
+    vetor[i] = vetor[j];
+    vetor[j] = aux;
+}
+
+
+void selectionsort(vector<int> &vetor) {
     int n = vetor.size();
 
-    bool trocou;
-
     for(int i = 0; i < n-1; i++) {
-        trocou = false;
-        for(int j = 0; j < n-1-i; j++) {
-            if(vetor[j] > vetor[j+1]) {
-                int aux = vetor[j];
-                vetor[j] = vetor[j+1];
-                vetor[j+1] = aux; 
-
-                trocou = true;
+        int min = vetor[i];
+        int minIndex = i;
+        for(int j = i+1; j < n; j++) {
+            if(vetor[j] < min) {
+                min = vetor[j];
+                minIndex = j;
             }
         }
-
-        if(!trocou) {
-            break;
-        }
+        troca(vetor, i, minIndex);
     }
 }
 
@@ -39,7 +39,7 @@ void printa_vetor(vector<int> vetor) {
 
 
 int main() {
-    int n = 0;
+    int n;
     vector<int> vetor;
 
     cin >> n;
@@ -50,7 +50,7 @@ int main() {
         cin >> vetor[i];
     }
 
-    bubblesort(vetor);
+    selectionsort(vetor);
 
     printa_vetor(vetor);
 

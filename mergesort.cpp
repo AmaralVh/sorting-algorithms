@@ -79,8 +79,6 @@ int main() {
 
     cin >> n;
 
-    int numero = 0;
-
     vetor.resize(n);
 
     for(int i = 0; i < n; i++) {
